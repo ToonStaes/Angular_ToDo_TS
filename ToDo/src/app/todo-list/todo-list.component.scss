@@ -1,0 +1,33 @@
+@import "../../styles.scss";
+.card {
+  width: 100%;
+
+  .card-title {
+    font-size: 40px;
+  }
+}
+
+.custom-orange {
+  background-color: $orange-custom;
+}
+
+.custom-blue {
+  background-color: $blue-custom;
+}
+
+.custom-grey {
+  background-color: $grey-custom;
+}
+
+.custom-purple {
+  background-color: $purple-custom;
+}
+
+.custom-red {
+  background-color: $red-custom;
+}
+
+.custom-green {
+  background-color: $green-custom;
+}
+

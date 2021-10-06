@@ -1,0 +1,6 @@
+<div class="card" *ngIf="todo_list" [ngClass]="todo_list.category">
+  <h5 class="card-title ml-2">{{todo_list.name}}</h5>
+  <div class="card-body">
+    <app-todo-item *ngFor="let item of todo_list.items"></app-todo-item>
+  </div>
+</div>

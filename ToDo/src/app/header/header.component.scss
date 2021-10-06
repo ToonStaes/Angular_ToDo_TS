@@ -1,0 +1,14 @@
+@import "../../styles.scss";
+.jumbotron-fluid {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background-color: $blue-custom;
+  .container {
+    h1{
+      margin-bottom: 0;
+      color: #fff;
+    }
+    height: 50px;
+    padding: 0;
+  }
+}
