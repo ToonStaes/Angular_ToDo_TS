@@ -11,10 +11,10 @@ export class TodoListService {
 
   constructor(private todoItemService: TodoItemService) {
     let list1: Todo_list = {
-      id: 1,
+      id: 4,
       name: "School",
       category: "custom-grey",
-      items: todoItemService.getTodoItemsByListId(1)
+      items: todoItemService.getTodoItemsByListId(4)
     }
 
     let list2: Todo_list = {
@@ -24,24 +24,32 @@ export class TodoListService {
       items: todoItemService.getTodoItemsByListId(2)
     }
 
-    let important: Todo_list= {
-      id: 4,
-      name: "Important",
+    let list3: Todo_list = {
+      id: 3,
+      name: "Sport",
       category: "custom-orange",
+      items: todoItemService.getTodoItemsByListId(3)
+    }
+
+    let important: Todo_list= {
+      id: 1,
+      name: "Important",
+      category: "important",
       items: todoItemService.getImportantItems()
     }
 
-    // let list3: Todo_list = {
-    //   id: 3,
-    //   name: "Sport",
-    //   category: "custom-orange",
-    //   items: todoItemService.getTodoItemsByListId(3)
-    // }
+    let approaching: Todo_list= {
+      id: 2,
+      name: "Deadline approaching",
+      category: "important",
+      items: todoItemService.getItemsWithin1Week()
+    }
 
     this.todo_lists.push(important)
+    this.todo_lists.push(approaching)
     this.todo_lists.push(list1)
     this.todo_lists.push(list2)
-    // this.todo_lists.push(list3)
+    this.todo_lists.push(list3)
   }
 
   getTodoLists(): Todo_list[] {
