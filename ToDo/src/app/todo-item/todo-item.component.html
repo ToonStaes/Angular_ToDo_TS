@@ -1,1 +1,9 @@
-<p>todo-item works!</p>
+<div *ngIf="todo_item" class="ToDo-item mb-3 row mx-4">
+    <!-- <p class="col-md-1 col-1 my-3 text-right" *ngIf="!todo_item.isFinished"><i class="far fa-square"></i></p>
+    <p class="col-md-1 col-1 my-3 text-right" *ngIf="todo_item.isFinished"><i class="far fa-check-square"></i></p> -->
+    <p class="col-md-6 col-12 my-3" *ngIf="!todo_item.isFinished"><i class="far fa-square mr-4"></i>{{ todo_item.omschrijving }}</p>
+    <p class="col-md-6 col-12 my-3" *ngIf="todo_item.isFinished"><i class="far fa-check-square mr-4"></i>{{ todo_item.omschrijving }}</p>
+    <p class="col-md-4 col-8 my-3">{{ todo_item.datum }}</p>
+    <p class="col-md-2 col-4 my-3" *ngIf="todo_item.isImportant"><i class="fas fa-bookmark"></i></p>
+    <p class="col-md-2 col-4 my-3" *ngIf="!todo_item.isImportant"><i class="far fa-bookmark"></i></p>
+</div>

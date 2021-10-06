@@ -24,7 +24,7 @@ export class TodoItemService {
       list_id: 2,
       omschrijving: "itempje 2",
       datum: "5/03/2022",
-      isFinished: false,
+      isFinished: true,
       isImportant: false
     }
 
@@ -34,7 +34,7 @@ export class TodoItemService {
       omschrijving: "itempje 3",
       datum: "7/08/2022",
       isFinished: false,
-      isImportant: false
+      isImportant: true
     }
 
     this.todo_items.push(item1);
