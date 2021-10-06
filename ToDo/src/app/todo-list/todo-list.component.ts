@@ -15,11 +15,4 @@ export class TodoListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  styles() {
-    let styles = {
-      'background-color': this.todo_list.category,
-    };
-    return styles
-  }
-
 }
