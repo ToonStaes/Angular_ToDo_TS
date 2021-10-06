@@ -51,4 +51,14 @@ export class TodoItemService {
     });
     return items;
   }
+
+  getImportantItems(): Todo_item[] {
+    var items: Todo_item[] = [];
+    this.todo_items.forEach(item => {
+      if (item.isImportant == true){
+        items.push(item)
+      }
+    });
+    return items;
+  }
 }
