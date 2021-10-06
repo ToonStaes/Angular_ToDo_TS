@@ -24,6 +24,13 @@ export class TodoListService {
       items: todoItemService.getTodoItemsByListId(2)
     }
 
+    let important: Todo_list= {
+      id: 4,
+      name: "Important",
+      category: "custom-orange",
+      items: todoItemService.getImportantItems()
+    }
+
     // let list3: Todo_list = {
     //   id: 3,
     //   name: "Sport",
@@ -31,6 +38,7 @@ export class TodoListService {
     //   items: todoItemService.getTodoItemsByListId(3)
     // }
 
+    this.todo_lists.push(important)
     this.todo_lists.push(list1)
     this.todo_lists.push(list2)
     // this.todo_lists.push(list3)
