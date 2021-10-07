@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { DebugElement, Injectable } from '@angular/core';
+import * as moment from 'moment';
 import { Todo_item } from './todo-item';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class TodoItemService {
   constructor() {
     let item1: Todo_item = {
       id: 1,
-      list_id: 1,
+      list_id: 4,
       omschrijving: "itempje",
       datum: "23/03/2022",
       isFinished: false,
@@ -37,9 +38,19 @@ export class TodoItemService {
       isImportant: true
     }
 
+    let item4: Todo_item = {
+      id: 4,
+      list_id: 3,
+      omschrijving: "itempje 4",
+      datum: "11/10/2021",
+      isFinished: false,
+      isImportant: true
+    }
+
     this.todo_items.push(item1);
     this.todo_items.push(item2);
     this.todo_items.push(item3);
+    this.todo_items.push(item4);
   }
 
   getTodoItemsByListId(id: number): Todo_item[] {
@@ -61,4 +72,18 @@ export class TodoItemService {
     });
     return items;
   }
+
+  getItemsWithin1Week(): Todo_item[] {
+    var items: Todo_item[] = [];
+    var date: Date = new Date();
+    this.todo_items.forEach(item => {
+      var itemdate = moment(item.datum, "DD/MM/YYYY");
+      var now = moment(date, "DD/MM/YYYY").add(7, "days")
+      if (itemdate < now){
+        items.push(item)
+      }
+    });
+    return items;
+  }
 }
+
