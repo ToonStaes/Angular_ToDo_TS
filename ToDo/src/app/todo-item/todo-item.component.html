@@ -1,9 +1,8 @@
 <div *ngIf="todo_item" class="ToDo-item mb-3 row mx-4">
-    <!-- <p class="col-md-1 col-1 my-3 text-right" *ngIf="!todo_item.isFinished"><i class="far fa-square"></i></p>
-    <p class="col-md-1 col-1 my-3 text-right" *ngIf="todo_item.isFinished"><i class="far fa-check-square"></i></p> -->
-    <p class="col-md-6 col-12 my-3" *ngIf="!todo_item.isFinished"><i class="far fa-square mr-4"></i>{{ todo_item.omschrijving }}</p>
-    <p class="col-md-6 col-12 my-3" *ngIf="todo_item.isFinished"><i class="far fa-check-square mr-4"></i>{{ todo_item.omschrijving }}</p>
+    <p class="col-md-6 col-11 my-3" *ngIf="!todo_item.isFinished"><i class="far fa-square mr-4"></i>{{ todo_item.omschrijving }}</p>
+    <p class="col-md-6 col-11 my-3" *ngIf="todo_item.isFinished"><i class="far fa-check-square mr-4"></i>{{ todo_item.omschrijving }}</p>
     <p class="col-md-4 col-8 my-3">{{ todo_item.datum }}</p>
-    <p class="col-md-2 col-4 my-3" *ngIf="todo_item.isImportant"><i class="fas fa-bookmark"></i></p>
-    <p class="col-md-2 col-4 my-3" *ngIf="!todo_item.isImportant"><i class="far fa-bookmark"></i></p>
+    <button class="btn my-auto col-2 col-md-1" *ngIf="todo_item.isImportant"><i class="fas fa-bookmark"></i></button>
+    <button class="btn my-auto col-2 col-md-1" *ngIf="!todo_item.isImportant"><i class="far fa-bookmark"></i></button>
+    <button class="btn btn-outline-danger col-2 my-auto col-md-1"><i class="far fa-trash-alt"></i></button>
 </div>

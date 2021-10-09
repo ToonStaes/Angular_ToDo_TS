@@ -2,4 +2,13 @@
 
 .ToDo-item {
   background-color: #fff;
+
+  .btn {
+    padding: 0;
+    height: 25px;
+  }
+
+  .btn-outline-danger {
+    max-width: 40px;
+  }
 }
