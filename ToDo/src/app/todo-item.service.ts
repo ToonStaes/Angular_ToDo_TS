@@ -17,7 +17,7 @@ export class TodoItemService {
       omschrijving: "itempje",
       datum: "23/03/2022",
       isFinished: false,
-      isImportant: false
+      isImportant: false,
     }
 
     let item2: Todo_item = {
@@ -33,7 +33,7 @@ export class TodoItemService {
       id: 3,
       list_id: 2,
       omschrijving: "itempje 3",
-      datum: "7/08/2022",
+      datum: "7/02/2022",
       isFinished: false,
       isImportant: true
     }
@@ -42,7 +42,7 @@ export class TodoItemService {
       id: 4,
       list_id: 3,
       omschrijving: "itempje 4",
-      datum: "11/10/2021",
+      datum: "20/10/2021",
       isFinished: false,
       isImportant: true
     }
