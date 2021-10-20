@@ -45,8 +45,12 @@ export class TodoListService {
       items: todoItemService.getItemsWithin1Week()
     }
 
-    this.todo_lists.push(important)
-    this.todo_lists.push(approaching)
+    if (important.items.length > 0){
+      this.todo_lists.push(important)
+    }
+    if (approaching.items.length > 0){
+      this.todo_lists.push(approaching)
+    }
     this.todo_lists.push(list1)
     this.todo_lists.push(list2)
     this.todo_lists.push(list3)
