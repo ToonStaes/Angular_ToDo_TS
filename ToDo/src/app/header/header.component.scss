@@ -4,15 +4,16 @@
   padding-bottom: 25px;
   background-color: $blue-custom;
   .container {
+    height: 50px;
+    padding: 0;
     h1{
       margin-bottom: 0;
       color: #fff;
     }
     .btn {
       height: 50px;
-      max-width: 85px;
+      max-width: 100px;
     }
-    height: 50px;
-    padding: 0;
+
   }
 }
