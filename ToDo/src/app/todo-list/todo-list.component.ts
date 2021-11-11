@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Todo_item } from '../todo-item';
 import { Todo_list } from '../todo-list';
 
 @Component({
