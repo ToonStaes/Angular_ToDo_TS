@@ -11,38 +11,51 @@ export class TodoListService {
 
   constructor(private todoItemService: TodoItemService) {
     let list1: Todo_list = {
-      id: 4,
+      id: 5,
       name: "School",
       category: "custom-grey",
-      items: todoItemService.getTodoItemsByListId(4)
+      items: todoItemService.getTodoItemsByListId(4),
+      showOptions: true
     }
 
     let list2: Todo_list = {
-      id: 2,
+      id: 4,
       name: "Werk",
       category: "custom-green",
-      items: todoItemService.getTodoItemsByListId(2)
+      items: todoItemService.getTodoItemsByListId(2),
+      showOptions: true
     }
 
     let list3: Todo_list = {
       id: 3,
       name: "Sport",
       category: "custom-orange",
-      items: todoItemService.getTodoItemsByListId(3)
+      items: todoItemService.getTodoItemsByListId(3),
+      showOptions: true
     }
 
     let important: Todo_list= {
       id: 1,
       name: "Important",
       category: "important",
-      items: todoItemService.getImportantItems()
+      items: todoItemService.getImportantItems(),
+      showOptions: false
     }
 
     let approaching: Todo_list= {
-      id: 2,
+      id: 6,
       name: "Deadline approaching",
       category: "important",
-      items: todoItemService.getItemsWithin1Week()
+      items: todoItemService.getItemsWithin1Week(),
+      showOptions: false
+    }
+
+    let finished: Todo_list = {
+      id: 7,
+      name: "Finished",
+      category: "important",
+      items: todoItemService.getFinishedItems(),
+      showOptions: false
     }
 
     if (important.items.length > 0){
@@ -50,6 +63,9 @@ export class TodoListService {
     }
     if (approaching.items.length > 0){
       this.todo_lists.push(approaching)
+    }
+    if (finished.items.length > 0){
+      this.todo_lists.push(finished)
     }
     this.todo_lists.push(list1)
     this.todo_lists.push(list2)

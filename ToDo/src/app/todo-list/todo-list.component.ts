@@ -8,7 +8,19 @@ import { Todo_list } from '../todo-list';
 })
 export class TodoListComponent implements OnInit {
 
-  @Input() todo_list: Todo_list = {id: 0, name: "", category: "", items: []}
+  @Input() todo_list: Todo_list = {id: 0, name: "", category: "", items: [], showOptions: true}
+
+  addItem() {
+    console.log("add item")
+  }
+
+  deleteList(id: number) {
+    console.log("delete list with id: " + id)
+  }
+
+  editList(id: number) {
+    console.log("edit list with id: " + id)
+  }
 
   constructor() { }
 

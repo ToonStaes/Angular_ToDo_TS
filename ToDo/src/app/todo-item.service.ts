@@ -75,11 +75,22 @@ export class TodoItemService {
 
   getItemsWithin1Week(): Todo_item[] {
     var items: Todo_item[] = [];
-    var date: Date = new Date();
+    var newDate: Date = new Date();
     this.todo_items.forEach(item => {
       var itemdate = moment(item.datum, "DD/MM/YYYY");
-      var now = moment(date, "DD/MM/YYYY").add(7, "days")
-      if (itemdate < now){
+      var now = moment(newDate, "DD/MM/YYYY")
+      var oneweek = moment(now, "DD/MM/YYYY").add(7, "days")
+      if (now <= itemdate && itemdate <= oneweek){
+        items.push(item)
+      }
+    });
+    return items;
+  }
+
+  getFinishedItems(): Todo_item[] {
+    var items: Todo_item[] = [];
+    this.todo_items.forEach(item => {
+      if (item.isFinished == true){
         items.push(item)
       }
     });

@@ -5,4 +5,5 @@ export interface Todo_list {
   name: string;
   category: string;
   items: Array<Todo_item>;
+  showOptions: boolean;
 }
