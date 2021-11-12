@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ItemFormComponent } from './item-form/item-form.component';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { FooterComponent } from './footer/footer.component';
     TodoListComponent,
     TodoItemComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ItemFormComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,8 @@ import { FooterComponent } from './footer/footer.component';
     BrowserAnimationsModule,
     MatMenuModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

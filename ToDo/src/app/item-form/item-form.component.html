@@ -1,0 +1,33 @@
+<div class="modal" id="modal-item" *ngIf="showModal">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" *ngIf="isAdd">Create todo-item</h5>
+              <h5 class="modal-title" *ngIf="isEdit">Edit todo-item</h5>
+              <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-danger" role="alert" *ngIf="isSubmitted && errorMessage">
+              {{errorMessage}}
+            </div>
+            <div class="alert alert-warning" role="warning">
+              <p>Form Status: {{ itemForm.status }}</p>
+            </div>
+            <form (ngSubmit)="onSubmit()" [formGroup]="itemForm">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="description" name="description" placeholder="Description" formControlName="description" minlength="10">
+              </div>
+              <div class="form-group">
+                <input type="date" class="form-control" id="date" name="date" placeholder="2021-12-25" formControlName="date"  class="mr-2">
+                <label for="date">Date</label>
+              </div>
+              <button type="submit" class="btn btn-primary" *ngIf="isAdd" [disabled]="!itemForm.valid || isSubmitted">Add</button>
+              <button type="submit" class="btn btn-primary" *ngIf="isEdit" [disabled]="!itemForm.valid || isSubmitted">Save</button>
+            </form>
+          </div>
+      </div>
+  </div>
+</div>

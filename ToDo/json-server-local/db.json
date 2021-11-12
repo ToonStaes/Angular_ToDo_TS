@@ -19,38 +19,5 @@
       "showOptions": true
     }
   ],
-  "items": [
-    {
-      "id": 1,
-      "listId": 5,
-      "description": "itempje",
-      "date": "15/11/2021",
-      "isFinished": false,
-      "isImportant": false
-    },
-    {
-      "id": 2,
-      "listId": 6,
-      "description": "itempje 2",
-      "date": "5/03/2022",
-      "isFinished": true,
-      "isImportant": false
-    },
-    {
-      "id": 3,
-      "listId": 6,
-      "description": "itempje 3",
-      "date": "7/02/2022",
-      "isFinished": false,
-      "isImportant": true
-    },
-    {
-      "id": 4,
-      "listId": 7,
-      "description": "itempje 4",
-      "date": "20/10/2021",
-      "isFinished": false,
-      "isImportant": true
-    }
-  ]
+  "items": []
 }
