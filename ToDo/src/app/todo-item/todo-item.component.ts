@@ -9,7 +9,7 @@ import { Todo_item } from '../todo-item';
   styleUrls: ['./todo-item.component.scss']
 })
 export class TodoItemComponent implements OnInit {
-  @Input() todo_item: Todo_item = {id: 0, list_id: 0, omschrijving: "", datum: "", isImportant: false, isFinished: false}
+  @Input() todo_item: Todo_item = {id: 0, listId: 0, description: "", date: "", isImportant: false, isFinished: false}
 
   constructor() { }
 
