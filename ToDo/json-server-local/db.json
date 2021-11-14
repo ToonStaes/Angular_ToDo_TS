@@ -29,14 +29,6 @@
       "isImportant": false
     },
     {
-      "id": 2,
-      "listId": 6,
-      "description": "itempje 2",
-      "date": "5/03/2022",
-      "isFinished": true,
-      "isImportant": false
-    },
-    {
       "id": 3,
       "listId": 6,
       "description": "itempje 3",

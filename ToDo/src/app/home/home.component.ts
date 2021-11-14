@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
-import { Observable } from 'rxjs';
 import { Todo_item } from '../todo-item';
 import { TodoItemService } from '../todo-item.service';
 import { Todo_list } from '../todo-list';
 import { TodoListService } from '../todo-list.service';
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -13,12 +14,28 @@ import { TodoListService } from '../todo-list.service';
 })
 export class HomeComponent implements OnInit {
 
-  todo_lists: Todo_list[] = []
-  todo_items: Todo_item[] = []
-  important_items: Todo_item[] = []
-  important_list!: Todo_list
+  todo_lists: Todo_list[] = [];
+  todo_items: Todo_item[] = [];
+  important_items: Todo_item[] = [];
+  important_list!: Todo_list;
+  subject: Subject<any> = new Subject();
 
   constructor(private todoListService: TodoListService, private todoItemService: TodoItemService) {
+
+  }
+
+  deleteItem(){
+    console.log("second event received")
+    this.getLists();
+  }
+
+  addItem(kind: string, id: number){
+
+  }
+
+  getLists(): void {
+    console.log("get Lists")
+    this.todo_lists = []
     // Get important-items from DB and make important list
     this.todoItemService.getImportantItems().subscribe((importantItems) => {
       this.important_items = importantItems
@@ -31,7 +48,9 @@ export class HomeComponent implements OnInit {
         showOptions: false
       }
 
-      this.todo_lists.push(important)
+      if (important.items.length > 0){
+        this.todo_lists.push(important)
+      }
     })
 
     // Get all items, to make FinishedItems-list, PastDeadline-list and DeadlineApproaching-list
@@ -90,9 +109,16 @@ export class HomeComponent implements OnInit {
         showOptions: false
       }
 
-      this.todo_lists.push(deadlineApproaching)
-      this.todo_lists.push(finished)
-      this.todo_lists.push(pastDeadline)
+      if (deadlineApproaching.items.length > 0) {
+        this.todo_lists.push(deadlineApproaching)
+      }
+      if (finished.items.length > 0) {
+        this.todo_lists.push(finished)
+      }
+      if (pastDeadline.items.length > 0) {
+        this.todo_lists.push(pastDeadline)
+      }
+
     })
 
     // Get prebuilt lists from DB
@@ -104,7 +130,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
-
   ngOnInit(): void {
+    this.getLists()
   }
 }
