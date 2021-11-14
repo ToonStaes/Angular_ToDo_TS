@@ -12,7 +12,6 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { ItemFormComponent } from './item-form/item-form.component';
 
 
 @NgModule({
@@ -23,7 +22,6 @@ import { ItemFormComponent } from './item-form/item-form.component';
     TodoItemComponent,
     HeaderComponent,
     FooterComponent,
-    ItemFormComponent
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,6 @@ import { Todo_list } from '../todo-list';
 import { TodoListService } from '../todo-list.service';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
-import { CallService } from '../call.service';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +20,7 @@ export class HomeComponent implements OnInit {
   important_list!: Todo_list;
   subject: Subject<any> = new Subject();
 
-  constructor(private todoListService: TodoListService, private todoItemService: TodoItemService, public Util: CallService) {
+  constructor(private todoListService: TodoListService, private todoItemService: TodoItemService) {
 
   }
 
@@ -30,15 +29,9 @@ export class HomeComponent implements OnInit {
     this.getLists();
   }
 
-  // addItem(kind: string, id: number){
-  //   if (kind === "isAdd"){
-  //     this.Util.sendClickCall("kind:isAdd")
-  //   }
-  //   else {
-  //     this.Util.sendClickCall("kind:isEdit,id:" + id)
-  //   }
+  addItem(kind: string, id: number){
 
-  // }
+  }
 
   getLists(): void {
     console.log("get Lists")
