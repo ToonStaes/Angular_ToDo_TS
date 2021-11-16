@@ -25,10 +25,14 @@ export class HomeComponent implements OnInit {
   }
 
   deleteItem(){
-    this.getLists();
+    this.getLists()
   }
 
   addItem(){
+    this.getLists()
+  }
+
+  editItem(){
     this.getLists()
   }
 

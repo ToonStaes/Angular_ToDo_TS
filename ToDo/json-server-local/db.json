@@ -21,7 +21,7 @@
   ],
   "items": [
     {
-      "description": "Angular: make Important",
+      "description": "Angular: Toggle Important",
       "listId": 5,
       "isFinished": false,
       "isImportant": false,
@@ -99,6 +99,14 @@
       "isImportant": false,
       "date": "28/11/2021",
       "id": 16
+    },
+    {
+      "description": "Angular: On edit item: date is not displayed",
+      "listId": 5,
+      "isFinished": false,
+      "isImportant": false,
+      "date": "28/11/2021",
+      "id": 17
     }
   ]
 }

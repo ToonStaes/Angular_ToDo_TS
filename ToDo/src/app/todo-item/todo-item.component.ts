@@ -4,6 +4,9 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { Todo_item } from '../todo-item';
 import { Subscription } from 'rxjs';
 import { TodoItemService } from '../todo-item.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ItemFormComponent } from '../item-form/item-form.component';
+import * as moment from 'moment';
 
 
 @Component({
@@ -15,10 +18,11 @@ export class TodoItemComponent implements OnInit, OnDestroy {
   @Input() todo_item: Todo_item = {id: 0, listId: 0, description: "", date: "", isImportant: false, isFinished: false}
 
   @Output() deleteItemEvent: EventEmitter<any> = new EventEmitter();
+  @Output() editItemEvent: EventEmitter<any> = new EventEmitter();
 
   deleteItem$: Subscription = new Subscription()
 
-  constructor(private httpClient: HttpClient, private todoItemService: TodoItemService) { }
+  constructor(private todoItemService: TodoItemService, private dialog: MatDialog) { }
 
   deleteItem(id: number) {
     this.deleteItem$ = this.todoItemService.deleteItem(id).subscribe(result => {
@@ -30,8 +34,33 @@ export class TodoItemComponent implements OnInit, OnDestroy {
     });
   }
 
-  editItem(id: number) {
-    console.log("edit item with id: " + id)
+  editItem(item: Todo_item) {
+    console.log("edit item with id: " + item.id)
+
+    const dialogRef = this.dialog.open(ItemFormComponent, {
+      width: '450px',
+      data: {description: item.description, date: item.date},
+    })
+
+    dialogRef.afterClosed().subscribe(formResult => {
+      formResult.date = moment(formResult.date).format("DD/MM/YYYY")
+
+      let inputItem: Todo_item = {
+        description: formResult.description,
+        listId: item.listId,
+        isFinished: item.isFinished,
+        isImportant: item.isImportant,
+        date: formResult.date,
+        id: item.id,
+      }
+
+      this.todoItemService.putItem(inputItem.id, inputItem).subscribe(result => {
+        this.editItemEvent.emit()
+      },
+      error => {
+        console.log(error)
+      })
+    })
   }
 
   ngOnInit(): void {

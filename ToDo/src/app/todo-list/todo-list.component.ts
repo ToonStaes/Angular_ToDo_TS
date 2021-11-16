@@ -18,6 +18,7 @@ export class TodoListComponent implements OnInit {
 
   @Output() deleteItemEvent: EventEmitter<any> = new EventEmitter();
   @Output() addItemEvent: EventEmitter<any> = new EventEmitter();
+  @Output() editItemEvent: EventEmitter<any> = new EventEmitter();
 
   list!: Todo_list;
 
@@ -29,13 +30,13 @@ export class TodoListComponent implements OnInit {
     console.log("edit list with id: " + id)
   }
 
-  addItem(id: number) {
-    this.todolistService.getTodoListById(id).subscribe((result) => {
+  addItem(listId: number) {
+    this.todolistService.getTodoListById(listId).subscribe((result) => {
       this.list = result
 
       const dialogRef = this.dialog.open(ItemFormComponent, {
         width: '450px',
-        data: {name: this.list.name, description: "", date: ""},
+        data: {description: "", date: ""},
       });
 
       dialogRef.afterClosed().subscribe(formResult => {
@@ -61,14 +62,14 @@ export class TodoListComponent implements OnInit {
   }
 
   editItem() {
-    console.log("edit item")
+    this.editItemEvent.emit();
   }
 
   deleteItem() {
     this.deleteItemEvent.emit()
   }
 
-  constructor(public dialog: MatDialog, private todolistService: TodoListService, private todoItemService: TodoItemService) { }
+  constructor(private dialog: MatDialog, private todolistService: TodoListService, private todoItemService: TodoItemService) { }
 
   ngOnInit(): void {
   }
