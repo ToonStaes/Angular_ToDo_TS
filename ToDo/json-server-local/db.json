@@ -21,28 +21,84 @@
   ],
   "items": [
     {
-      "id": 1,
+      "description": "Angular: make Important",
       "listId": 5,
-      "description": "itempje",
-      "date": "15/11/2021",
       "isFinished": false,
-      "isImportant": false
+      "isImportant": false,
+      "date": "28/11/2021",
+      "id": 6
     },
     {
-      "id": 3,
-      "listId": 6,
-      "description": "itempje 3",
-      "date": "7/02/2022",
+      "description": "Angular: Styling form",
+      "listId": 5,
       "isFinished": false,
-      "isImportant": true
+      "isImportant": false,
+      "date": "28/11/2021",
+      "id": 8
     },
     {
-      "id": 4,
-      "listId": 7,
-      "description": "itempje 4",
-      "date": "20/10/2021",
+      "description": "Angular: Date formatting in form",
+      "listId": 5,
       "isFinished": false,
-      "isImportant": true
+      "isImportant": false,
+      "date": "28/11/2021",
+      "id": 9
+    },
+    {
+      "description": "Angular: Sort on Date",
+      "listId": 5,
+      "isFinished": false,
+      "isImportant": false,
+      "date": "28/11/2021",
+      "id": 10
+    },
+    {
+      "description": "Angular: Custom sorting",
+      "listId": 5,
+      "isFinished": false,
+      "isImportant": false,
+      "date": "28/11/2021",
+      "id": 11
+    },
+    {
+      "description": "Angular: Edit item",
+      "listId": 5,
+      "isFinished": false,
+      "isImportant": false,
+      "date": "28/11/2021",
+      "id": 12
+    },
+    {
+      "description": "Angular: Toggle done",
+      "listId": 5,
+      "isFinished": false,
+      "isImportant": false,
+      "date": "28/11/2021",
+      "id": 13
+    },
+    {
+      "description": "Angular: Add list",
+      "listId": 5,
+      "isFinished": false,
+      "isImportant": false,
+      "date": "28/11/2021",
+      "id": 14
+    },
+    {
+      "description": "Angular: Delete list",
+      "listId": 5,
+      "isFinished": false,
+      "isImportant": false,
+      "date": "28/11/2021",
+      "id": 15
+    },
+    {
+      "description": "Angular: Update list",
+      "listId": 5,
+      "isFinished": false,
+      "isImportant": false,
+      "date": "28/11/2021",
+      "id": 16
     }
   ]
 }

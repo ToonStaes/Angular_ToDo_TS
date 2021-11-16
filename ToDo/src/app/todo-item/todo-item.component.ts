@@ -23,13 +23,11 @@ export class TodoItemComponent implements OnInit, OnDestroy {
   deleteItem(id: number) {
     this.deleteItem$ = this.todoItemService.deleteItem(id).subscribe(result => {
       //all went well
-      console.log("item deleted, send of first event")
       this.deleteItemEvent.emit()
     }, error => {
       //error
       console.log(error)
     });
-    console.log("delete item")
   }
 
   editItem(id: number) {
