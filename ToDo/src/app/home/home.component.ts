@@ -25,16 +25,14 @@ export class HomeComponent implements OnInit {
   }
 
   deleteItem(){
-    console.log("second event received")
     this.getLists();
   }
 
-  addItem(kind: string, id: number){
-
+  addItem(){
+    this.getLists()
   }
 
   getLists(): void {
-    console.log("get Lists")
     this.todo_lists = []
     // Get important-items from DB and make important list
     this.todoItemService.getImportantItems().subscribe((importantItems) => {
@@ -73,7 +71,7 @@ export class HomeComponent implements OnInit {
         }
         else {
           // Check if deadline has passed
-          if ( now > itemDate){
+          if ( now > itemDate && now.date() > itemDate.date()){
             pastDeadline_items.push(item)
           }
           else{

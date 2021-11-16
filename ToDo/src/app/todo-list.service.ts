@@ -23,6 +23,10 @@ export class TodoListService {
     return this.httpClient.get<Todo_list[]>("http://localhost:3000/lists?_embed=items")
   }
 
+  getTodoListById(id: number): Observable<Todo_list> {
+    return this.httpClient.get<Todo_list>("http://localhost:3000/lists/" + id)
+  }
+
   // let list1: Todo_list = {
     //   id: 5,
     //   name: "School",
