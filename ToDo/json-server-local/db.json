@@ -23,7 +23,7 @@
     {
       "description": "Angular: Toggle Important",
       "listId": 5,
-      "isFinished": false,
+      "isFinished": true,
       "isImportant": true,
       "date": "28/11/2021",
       "id": 6
@@ -32,7 +32,7 @@
       "description": "Angular: Styling form",
       "listId": 5,
       "isFinished": false,
-      "isImportant": true,
+      "isImportant": false,
       "date": "28/11/2021",
       "id": 8
     },
@@ -63,7 +63,7 @@
     {
       "description": "Angular: Edit item",
       "listId": 5,
-      "isFinished": false,
+      "isFinished": true,
       "isImportant": false,
       "date": "28/11/2021",
       "id": 12
@@ -71,7 +71,7 @@
     {
       "description": "Angular: Toggle done",
       "listId": 5,
-      "isFinished": false,
+      "isFinished": true,
       "isImportant": false,
       "date": "28/11/2021",
       "id": 13
@@ -107,6 +107,14 @@
       "isImportant": false,
       "date": "28/11/2021",
       "id": 17
+    },
+    {
+      "description": "Angular: toggle displaying done items",
+      "listId": 5,
+      "isFinished": false,
+      "isImportant": false,
+      "date": "28/11/2021",
+      "id": 18
     }
   ]
 }

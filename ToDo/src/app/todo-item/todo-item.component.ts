@@ -74,6 +74,17 @@ export class TodoItemComponent implements OnInit, OnDestroy {
     })
   }
 
+  toggleFinished(item: Todo_item) {
+    item.isFinished = !item.isFinished // switches between true and false
+
+    this.todoItemService.putItem(item.id, item).subscribe(result => {
+      this.editItemEvent.emit()
+    },
+    error => {
+      console.log(error)
+    })
+  }
+
   ngOnInit(): void {
   }
 

@@ -1,6 +1,6 @@
 <div *ngIf="todo_item" class="ToDo-item mb-3 row mx-4">
-    <p class="col-md-6 col-11 my-3" *ngIf="!todo_item.isFinished"><i class="far fa-square mr-4"></i>{{ todo_item.description }}</p>
-    <p class="col-md-6 col-11 my-3" *ngIf="todo_item.isFinished"><i class="far fa-check-square mr-4"></i>{{ todo_item.description }}</p>
+    <p class="col-md-6 col-11 my-3" *ngIf="!todo_item.isFinished" (click)="toggleFinished(todo_item)"><i class="far fa-square mr-4"></i>{{ todo_item.description }}</p>
+    <p class="col-md-6 col-11 my-3" *ngIf="todo_item.isFinished" (click)="toggleFinished(todo_item)"><i class="far fa-check-square mr-4"></i>{{ todo_item.description }}</p>
     <p class="col-md-4 col-8 my-3">{{ todo_item.date }}</p>
     <button class="btn my-auto col-2 col-md-1" *ngIf="todo_item.isImportant" (click)="toggleImportant(todo_item)"><i class="fas fa-bookmark"></i></button>
     <button class="btn my-auto col-2 col-md-1" *ngIf="!todo_item.isImportant" (click)="toggleImportant(todo_item)"><i class="far fa-bookmark"></i></button>
