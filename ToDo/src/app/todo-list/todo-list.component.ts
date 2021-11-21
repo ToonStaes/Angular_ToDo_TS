@@ -10,11 +10,16 @@ import { TodoItemService } from '../todo-item.service';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss']
+  styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
-
-  @Input() todo_list: Todo_list = {id: 0, name: "", category: "", items: [], showOptions: true}
+  @Input() todo_list: Todo_list = {
+    id: 0,
+    name: '',
+    category: '',
+    items: [],
+    showOptions: true,
+  };
 
   @Output() deleteItemEvent: EventEmitter<any> = new EventEmitter();
   @Output() addItemEvent: EventEmitter<any> = new EventEmitter();
@@ -25,24 +30,24 @@ export class TodoListComponent implements OnInit {
   list!: Todo_list;
 
   deleteList(id: number) {
-    console.log("delete list with id: " + id)
+    console.log('delete list with id: ' + id);
   }
 
   editList(id: number) {
-    console.log("edit list with id: " + id)
+    console.log('edit list with id: ' + id);
   }
 
   addItem(listId: number) {
     this.todolistService.getTodoListById(listId).subscribe((result) => {
-      this.list = result
+      this.list = result;
 
       const dialogRef = this.dialog.open(ItemFormComponent, {
         width: '450px',
-        data: {description: "", date: ""},
+        data: { description: '', date: '' },
       });
 
-      dialogRef.afterClosed().subscribe(formResult => {
-        formResult.date = moment(formResult.date).format("DD/MM/YYYY")
+      dialogRef.afterClosed().subscribe((formResult) => {
+        formResult.date = moment(formResult.date).format('DD/MM/YYYY');
 
         let inputItem: Todo_item = {
           description: formResult.description,
@@ -51,31 +56,36 @@ export class TodoListComponent implements OnInit {
           isImportant: false,
           date: formResult.date,
           id: 0,
-        }
+          deadline_approaching: false
+        };
 
-        this.todoItemService.postItem(inputItem).subscribe(result => {
-          this.addItemEvent.emit()
-        },
-        error => {
-          console.log(error)
-        })
+        this.todoItemService.postItem(inputItem).subscribe(
+          (result) => {
+            this.addItemEvent.emit();
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
       });
-    })
+    });
   }
 
   editItem(result: Todo_item) {
-    console.log(result)
-    this.todoItemEdit = result;
-    console.log(this.todoItemEdit)
-    this.editItemEvent.emit(this.todoItemEdit);
+    this.editItemEvent.emit(result);
   }
 
   deleteItem() {
-    this.deleteItemEvent.emit()
+    this.deleteItemEvent.emit();
   }
 
-  constructor(private dialog: MatDialog, private todolistService: TodoListService, private todoItemService: TodoItemService) { }
+  constructor(
+    private dialog: MatDialog,
+    private todolistService: TodoListService,
+    private todoItemService: TodoItemService
+  ) {}
 
   ngOnInit(): void {
+
   }
 }

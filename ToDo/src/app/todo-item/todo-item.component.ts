@@ -15,7 +15,7 @@ import * as moment from 'moment';
   styleUrls: ['./todo-item.component.scss']
 })
 export class TodoItemComponent implements OnInit, OnDestroy {
-  @Input() todo_item: Todo_item = {id: 0, listId: 0, description: "", date: "", isImportant: false, isFinished: false}
+  @Input() todo_item: Todo_item = {id: 0, listId: 0, description: "", date: "", isImportant: false, isFinished: false, deadline_approaching: false}
 
   @Output() deleteItemEvent: EventEmitter<any> = new EventEmitter();
   @Output() editItemEvent: EventEmitter<any> = new EventEmitter();
@@ -35,7 +35,6 @@ export class TodoItemComponent implements OnInit, OnDestroy {
   }
 
   editItem(item: Todo_item) {
-    console.log("edit item with id: " + item.id)
 
     const dialogRef = this.dialog.open(ItemFormComponent, {
       width: '450px',
@@ -45,17 +44,12 @@ export class TodoItemComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(formResult => {
       formResult.date = moment(formResult.date).format("DD/MM/YYYY")
 
-      let inputItem: Todo_item = {
-        description: formResult.description,
-        listId: item.listId,
-        isFinished: item.isFinished,
-        isImportant: item.isImportant,
-        date: formResult.date,
-        id: item.id,
-      }
+      item.description = formResult.description
+      item.date = formResult.date
+      item.deadline_approaching = false
 
-      this.todoItemService.putItem(inputItem.id, inputItem).subscribe(result => {
-        console.log("item component: "+result)
+      this.todoItemService.putItem(item.id, item).subscribe(result => {
+        console.log(result)
         this.editItemEvent.emit(result)
       },
       error => {
@@ -65,11 +59,9 @@ export class TodoItemComponent implements OnInit, OnDestroy {
   }
 
   toggleImportant(item: Todo_item) {
-    console.log("toggle important")
     item.isImportant = !item.isImportant // switches between true and false
 
     this.todoItemService.putItem(item.id, item).subscribe(result => {
-      console.log(result)
       this.editItemEvent.emit(result)
     },
     error => {
@@ -81,7 +73,7 @@ export class TodoItemComponent implements OnInit, OnDestroy {
     item.isFinished = !item.isFinished // switches between true and false
 
     this.todoItemService.putItem(item.id, item).subscribe(result => {
-      this.editItemEvent.emit()
+      this.editItemEvent.emit(result)
     },
     error => {
       console.log(error)

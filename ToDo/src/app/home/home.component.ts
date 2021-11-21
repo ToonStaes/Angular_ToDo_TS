@@ -34,14 +34,21 @@ export class HomeComponent implements OnInit {
   }
 
   editItem(result: Todo_item){
-    console.log("home component: " + result)
+    console.log("editItem received")
+    console.log(result)
     this.todo_lists.forEach(list => {
-      console.log(list)
-      console.log(list.items)
       list.items.forEach(item => {
-        console.log(item)
-        if (item.id = result.id){
+        if (item.id == result.id){
+          console.log("id gelijk")
           item = result
+          var newDate: Date = new Date();
+          var now = moment(newDate, 'DD/MM/YYYY');
+          var oneweek = moment(now).add(7, 'days');
+          var itemDate = moment(item.date, 'DD/MM/YYYY');
+
+          if (itemDate <= oneweek) {
+            item.deadline_approaching = true;
+          }
         }
       })
     });
@@ -52,10 +59,19 @@ export class HomeComponent implements OnInit {
 
     // Get prebuilt lists from DB
     this.todoListService.getTodoLists().subscribe((todoLists) => {
-      // this.todo_lists = todoLists
-      for (let listIndex in todoLists){
-        this.todo_lists.push(todoLists[listIndex])
-      }
+      this.todo_lists = todoLists
+      this.todo_lists.forEach(list => {
+        list.items.forEach(item => {
+          var newDate: Date = new Date();
+          var now = moment(newDate, 'DD/MM/YYYY');
+          var oneweek = moment(now).add(7, 'days');
+          var itemDate = moment(item.date, 'DD/MM/YYYY');
+
+          if (itemDate <= oneweek){
+            item.deadline_approaching = true
+          }
+        })
+      });
     })
   }
 
