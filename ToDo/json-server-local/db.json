@@ -38,31 +38,6 @@
       "id": 11
     },
     {
-      "description": "Angular: Edit item",
-      "listId": 5,
-      "isFinished": true,
-      "isImportant": true,
-      "date": "28/11/2021",
-      "id": 12
-    },
-    {
-      "description": "Angular: Toggle done",
-      "listId": 5,
-      "isFinished": true,
-      "isImportant": false,
-      "date": "28/11/2021",
-      "id": 13
-    },
-    {
-      "description": "Angular: Custom sorting",
-      "listId": 5,
-      "isFinished": false,
-      "isImportant": true,
-      "date": "28/11/2021",
-      "id": 14,
-      "deadline_approaching": true
-    },
-    {
       "description": "Angular: Delete list",
       "listId": 5,
       "isFinished": false,

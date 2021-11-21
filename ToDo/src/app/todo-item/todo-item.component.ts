@@ -24,10 +24,11 @@ export class TodoItemComponent implements OnInit, OnDestroy {
 
   constructor(private todoItemService: TodoItemService, private dialog: MatDialog) { }
 
-  deleteItem(id: number) {
-    this.deleteItem$ = this.todoItemService.deleteItem(id).subscribe(result => {
+  deleteItem(item: Todo_item) {
+    this.deleteItem$ = this.todoItemService.deleteItem(item.id).subscribe(result => {
+      console.log(item)
       //all went well
-      this.deleteItemEvent.emit()
+      this.deleteItemEvent.emit(item)
     }, error => {
       //error
       console.log(error)

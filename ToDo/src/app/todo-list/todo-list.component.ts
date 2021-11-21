@@ -61,7 +61,8 @@ export class TodoListComponent implements OnInit {
 
         this.todoItemService.postItem(inputItem).subscribe(
           (result) => {
-            this.addItemEvent.emit();
+            console.log(result)
+            this.addItemEvent.emit(result);
           },
           (error) => {
             console.log(error);
@@ -75,8 +76,10 @@ export class TodoListComponent implements OnInit {
     this.editItemEvent.emit(result);
   }
 
-  deleteItem() {
-    this.deleteItemEvent.emit();
+  deleteItem(result: Todo_item) {
+    console.log("deleteItem functie in list")
+    console.log(result)
+    this.deleteItemEvent.emit(result);
   }
 
   constructor(

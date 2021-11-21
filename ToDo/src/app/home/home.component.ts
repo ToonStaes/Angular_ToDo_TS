@@ -25,12 +25,25 @@ export class HomeComponent implements OnInit {
 
   }
 
-  deleteItem(){
-    this.getLists()
+  deleteItem(result: Todo_item){
+    this.todo_lists.forEach(list => {
+      list.items.forEach(item => {
+        if (item.id == result.id){
+          let itemIndex = list.items.indexOf(item, 0)
+          if (itemIndex > -1) {
+            list.items.splice(itemIndex, 1)
+          }
+        }
+      });
+    })
   }
 
-  addItem(){
-    this.getLists()
+  addItem(result: Todo_item){
+    this.todo_lists.forEach(list => {
+      if (list.id == result.listId){
+        list.items.push(result)
+      }
+    })
   }
 
   editItem(result: Todo_item){
