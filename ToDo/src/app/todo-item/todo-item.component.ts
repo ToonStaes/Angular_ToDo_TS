@@ -55,7 +55,8 @@ export class TodoItemComponent implements OnInit, OnDestroy {
       }
 
       this.todoItemService.putItem(inputItem.id, inputItem).subscribe(result => {
-        this.editItemEvent.emit()
+        console.log("item component: "+result)
+        this.editItemEvent.emit(result)
       },
       error => {
         console.log(error)
@@ -64,10 +65,12 @@ export class TodoItemComponent implements OnInit, OnDestroy {
   }
 
   toggleImportant(item: Todo_item) {
+    console.log("toggle important")
     item.isImportant = !item.isImportant // switches between true and false
 
     this.todoItemService.putItem(item.id, item).subscribe(result => {
-      this.editItemEvent.emit()
+      console.log(result)
+      this.editItemEvent.emit(result)
     },
     error => {
       console.log(error)

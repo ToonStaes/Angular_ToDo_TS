@@ -20,6 +20,8 @@ export class TodoListComponent implements OnInit {
   @Output() addItemEvent: EventEmitter<any> = new EventEmitter();
   @Output() editItemEvent: EventEmitter<any> = new EventEmitter();
 
+  todoItemEdit?: Todo_item;
+
   list!: Todo_list;
 
   deleteList(id: number) {
@@ -61,8 +63,11 @@ export class TodoListComponent implements OnInit {
     })
   }
 
-  editItem() {
-    this.editItemEvent.emit();
+  editItem(result: Todo_item) {
+    console.log(result)
+    this.todoItemEdit = result;
+    console.log(this.todoItemEdit)
+    this.editItemEvent.emit(this.todoItemEdit);
   }
 
   deleteItem() {

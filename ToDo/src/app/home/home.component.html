@@ -1,3 +1,3 @@
 <div class="row">
-  <app-todo-list *ngFor="let todo_list of todo_lists" [todo_list]="todo_list" class="col-12 mb-5" (deleteItemEvent)="deleteItem()" (addItemEvent)="addItem()" (editItemEvent)="editItem()"></app-todo-list>
+  <app-todo-list *ngFor="let todo_list of todo_lists" [todo_list]="todo_list" class="col-12 mb-5" (deleteItemEvent)="deleteItem()" (addItemEvent)="addItem()" (editItemEvent)="editItem($event)"></app-todo-list>
 </div>

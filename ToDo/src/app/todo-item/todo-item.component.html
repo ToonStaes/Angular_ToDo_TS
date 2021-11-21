@@ -1,5 +1,28 @@
-<div *ngIf="todo_item" class="ToDo-item mb-3 row mx-4">
-    <p class="col-md-6 col-11 my-3" *ngIf="!todo_item.isFinished" (click)="toggleFinished(todo_item)"><i class="far fa-square mr-4"></i>{{ todo_item.description }}</p>
+ <div *ngIf="!todo_item.isFinished && !todo_item.isImportant" class="normal-item mb-3 row mx-4"> <!-- item is not finished and not important -->
+    <p class="col-md-6 col-11 my-3" (click)="toggleFinished(todo_item)"><i class="far fa-square mr-4"></i>{{ todo_item.description }}</p>
+    <p class="col-md-4 col-8 my-3">{{ todo_item.date }}</p>
+    <button class="btn my-auto col-2 col-md-1" (click)="toggleImportant(todo_item)"><i class="far fa-bookmark"></i></button>
+
+    <button mat-button [matMenuTriggerFor]="menu" class="btn col-2 my-auto col-md-1"><i class="fas fa-ellipsis-h"></i></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="editItem(todo_item)"><i class="far fa-edit mx-2"></i>Edit</button>
+      <button mat-menu-item (click)="deleteItem(todo_item.id)"><i class="far fa-trash-alt mx-2"></i>Delete</button>
+    </mat-menu>
+</div>
+
+<div *ngIf="!todo_item.isFinished && todo_item.isImportant " class="important-item mb-3 row mx-4"> <!-- item is not finished but important -->
+    <p class="col-md-6 col-11 my-3" (click)="toggleFinished(todo_item)"><i class="far fa-square mr-4"></i>{{ todo_item.description }}</p>
+    <p class="col-md-4 col-8 my-3">{{ todo_item.date }}</p>
+    <button class="btn my-auto col-2 col-md-1" (click)="toggleImportant(todo_item)"><i class="fas fa-bookmark"></i></button>
+
+    <button mat-button [matMenuTriggerFor]="menu" class="btn col-2 my-auto col-md-1"><i class="fas fa-ellipsis-h"></i></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="editItem(todo_item)"><i class="far fa-edit mx-2"></i>Edit</button>
+      <button mat-menu-item (click)="deleteItem(todo_item.id)"><i class="far fa-trash-alt mx-2"></i>Delete</button>
+    </mat-menu>
+</div>
+
+<div *ngIf="todo_item.isFinished" class="finished-item mb-3 row mx-4"> <!-- item is finished -->
     <p class="col-md-6 col-11 my-3" *ngIf="todo_item.isFinished" (click)="toggleFinished(todo_item)"><i class="far fa-check-square mr-4"></i>{{ todo_item.description }}</p>
     <p class="col-md-4 col-8 my-3">{{ todo_item.date }}</p>
     <button class="btn my-auto col-2 col-md-1" *ngIf="todo_item.isImportant" (click)="toggleImportant(todo_item)"><i class="fas fa-bookmark"></i></button>
