@@ -21,13 +21,7 @@ export class TodoItemService {
   }
 
   getTodoItemById(id: number): Observable<Todo_item> {
-    return this.httpClient.get<Todo_item>("http://localhost:3000/items?id=" + id)
-
-  }
-
-  getImportantItems(): Observable<Todo_item[]> {
-    return this.httpClient.get<Todo_item[]>("http://localhost:3000/items?isImportant=true")
-
+    return this.httpClient.get<Todo_item>("http://localhost:3000/items/=" + id)
   }
 
   deleteItem(id: number): Observable<Todo_item> {
@@ -38,7 +32,7 @@ export class TodoItemService {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
 
-    return this.httpClient.post<Todo_item>("http://localhost:3000/items", item, {headers: headers});
+    return this.httpClient.post<Todo_item>("http://localhost:3000/items/", item, {headers: headers});
   }
 
   putItem(id: number, item: Todo_item): Observable<Todo_item> {

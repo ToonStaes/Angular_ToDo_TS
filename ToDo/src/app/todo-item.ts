@@ -5,4 +5,5 @@ export interface Todo_item {
   date: string;
   isImportant: boolean;
   isFinished: boolean;
+  deadline_approaching: boolean;
 }

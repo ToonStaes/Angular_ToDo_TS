@@ -19,116 +19,72 @@ export class HomeComponent implements OnInit {
   important_items: Todo_item[] = [];
   important_list!: Todo_list;
   subject: Subject<any> = new Subject();
+  todoItemEdit?: Todo_item;
 
   constructor(private todoListService: TodoListService, private todoItemService: TodoItemService) {
 
   }
 
-  deleteItem(){
-    this.getLists()
+  deleteItem(result: Todo_item){
+    this.todo_lists.forEach(list => {
+      list.items.forEach(item => {
+        if (item.id == result.id){
+          let itemIndex = list.items.indexOf(item, 0)
+          if (itemIndex > -1) {
+            list.items.splice(itemIndex, 1)
+          }
+        }
+      });
+    })
   }
 
-  addItem(){
-    this.getLists()
+  addItem(result: Todo_item){
+    this.todo_lists.forEach(list => {
+      if (list.id == result.listId){
+        list.items.push(result)
+      }
+    })
   }
 
-  editItem(){
-    this.getLists()
+  editItem(result: Todo_item){
+    console.log("editItem received")
+    console.log(result)
+    this.todo_lists.forEach(list => {
+      list.items.forEach(item => {
+        if (item.id == result.id){
+          console.log("id gelijk")
+          item = result
+          var newDate: Date = new Date();
+          var now = moment(newDate, 'DD/MM/YYYY');
+          var oneweek = moment(now).add(7, 'days');
+          var itemDate = moment(item.date, 'DD/MM/YYYY');
+
+          if (itemDate <= oneweek) {
+            item.deadline_approaching = true;
+          }
+        }
+      })
+    });
   }
 
   getLists(): void {
     this.todo_lists = []
-    // Get important-items from DB and make important list
-    this.todoItemService.getImportantItems().subscribe((importantItems) => {
-      this.important_items = importantItems
-
-      let important: Todo_list= {
-        id: 1,
-        name: "Important",
-        category: "important",
-        items: this.important_items,
-        showOptions: false
-      }
-
-      if (important.items.length > 0){
-        this.todo_lists.push(important)
-      }
-    })
-
-    // Get all items, to make FinishedItems-list, PastDeadline-list and DeadlineApproaching-list
-    this.todoItemService.getTodoItems().subscribe((todoItems) => {
-      this.todo_items = todoItems
-
-      var newDate: Date = new Date();
-      var now = moment(newDate, "DD/MM/YYYY")
-      var oneweek = moment(now, "DD/MM/YYYY").add(7, "days")
-
-      var deadlineAppr_items: Todo_item[] = []
-      var finished_items: Todo_item[] = []
-      var pastDeadline_items: Todo_item[] = []
-
-      this.todo_items.forEach(item => {
-        var itemDate = moment(item.date, "DD/MM/YYYY")
-        // check if finished
-        if (item.isFinished){
-          finished_items.push(item)
-        }
-        else {
-          // Check if deadline has passed
-          if ( now > itemDate && now.date() > itemDate.date()){
-            pastDeadline_items.push(item)
-          }
-          else{
-            // Check if deadline within one week
-            if (itemDate <= oneweek){
-              deadlineAppr_items.push(item)
-            }
-          }
-        }
-      })
-
-      let deadlineApproaching: Todo_list = {
-        id: 2,
-        name: "Deadline approaching",
-        category: "important",
-        items: deadlineAppr_items,
-        showOptions: false
-      }
-
-      let finished: Todo_list = {
-        id: 3,
-        name: "Done",
-        category: "important",
-        items: finished_items,
-        showOptions: false
-      }
-
-      let pastDeadline: Todo_list = {
-        id: 4,
-        name: "Past deadline",
-        category: "important",
-        items: pastDeadline_items,
-        showOptions: false
-      }
-
-      if (deadlineApproaching.items.length > 0) {
-        this.todo_lists.push(deadlineApproaching)
-      }
-      if (finished.items.length > 0) {
-        this.todo_lists.push(finished)
-      }
-      if (pastDeadline.items.length > 0) {
-        this.todo_lists.push(pastDeadline)
-      }
-
-    })
 
     // Get prebuilt lists from DB
     this.todoListService.getTodoLists().subscribe((todoLists) => {
-      // this.todo_lists = todoLists
-      for (let listIndex in todoLists){
-        this.todo_lists.push(todoLists[listIndex])
-      }
+      this.todo_lists = todoLists
+      this.todo_lists.forEach(list => {
+        list.items.forEach(item => {
+          var newDate: Date = new Date();
+          var now = moment(newDate, 'DD/MM/YYYY');
+          var oneweek = moment(now).add(7, 'days');
+          var itemDate = moment(item.date, 'DD/MM/YYYY');
+
+          if (itemDate <= oneweek){
+            item.deadline_approaching = true
+          }
+        })
+      });
     })
   }
 

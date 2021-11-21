@@ -8,7 +8,7 @@
     </mat-menu>
   </div>
   <div class="card-body">
-    <app-todo-item *ngFor="let item of todo_list.items" [todo_item]="item" (deleteItemEvent)="deleteItem()" (editItemEvent)="editItem()"></app-todo-item>
+    <app-todo-item *ngFor="let item of todo_list.items" [todo_item]="item" (deleteItemEvent)="deleteItem($event)" (editItemEvent)="editItem($event)"></app-todo-item>
     <div *ngIf="todo_list.showOptions" class="text-center">
       <button class="btn" mat-button (click)="addItem(todo_list.id)"><i class="far fa-plus-square"></i></button>
     </div>
