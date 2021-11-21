@@ -67,6 +67,17 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  deleteList(result: Todo_list){
+    this.todo_lists.forEach(list => {
+      if (list.id == result.id){
+        let listIndex = this.todo_lists.indexOf(list, 0)
+        if (listIndex > -1) {
+          this.todo_lists.splice(listIndex, 1)
+        }
+      }
+    })
+  }
+
   getLists(): void {
     this.todo_lists = []
 

@@ -24,13 +24,17 @@ export class TodoListComponent implements OnInit {
   @Output() deleteItemEvent: EventEmitter<any> = new EventEmitter();
   @Output() addItemEvent: EventEmitter<any> = new EventEmitter();
   @Output() editItemEvent: EventEmitter<any> = new EventEmitter();
+  @Output() deleteListEvent: EventEmitter<any> = new EventEmitter();
 
   todoItemEdit?: Todo_item;
 
   list!: Todo_list;
 
-  deleteList(id: number) {
-    console.log('delete list with id: ' + id);
+  deleteList(list: Todo_list) {
+    console.log('delete list with id: ' + list.id);
+    this.todolistService.deleteList(list.id).subscribe((result) => {
+      this.deleteListEvent.emit(list)
+    });
   }
 
   editList(id: number) {
@@ -56,12 +60,12 @@ export class TodoListComponent implements OnInit {
           isImportant: false,
           date: formResult.date,
           id: 0,
-          deadline_approaching: false
+          deadline_approaching: false,
         };
 
         this.todoItemService.postItem(inputItem).subscribe(
           (result) => {
-            console.log(result)
+            console.log(result);
             this.addItemEvent.emit(result);
           },
           (error) => {
@@ -77,8 +81,8 @@ export class TodoListComponent implements OnInit {
   }
 
   deleteItem(result: Todo_item) {
-    console.log("deleteItem functie in list")
-    console.log(result)
+    console.log('deleteItem functie in list');
+    console.log(result);
     this.deleteItemEvent.emit(result);
   }
 
@@ -88,7 +92,5 @@ export class TodoListComponent implements OnInit {
     private todoItemService: TodoItemService
   ) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 }
