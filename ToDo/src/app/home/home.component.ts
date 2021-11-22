@@ -52,16 +52,7 @@ export class HomeComponent implements OnInit {
     this.todo_lists.forEach(list => {
       list.items.forEach(item => {
         if (item.id == result.id){
-          console.log("id gelijk")
           item = result
-          var newDate: Date = new Date();
-          var now = moment(newDate, 'DD/MM/YYYY');
-          var oneweek = moment(now).add(7, 'days');
-          var itemDate = moment(item.date, 'DD/MM/YYYY');
-
-          if (itemDate <= oneweek) {
-            item.deadline_approaching = true;
-          }
         }
       })
     });
@@ -78,6 +69,15 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  checkDeadline(item: Todo_item): void {
+    var oneweek = moment().add(7, 'days');
+    var itemDate = moment(item.date, 'DD/MM/YYYY');
+
+    if (itemDate <= oneweek) {
+      item.deadline_approaching = true;
+    }
+  }
+
   getLists(): void {
     this.todo_lists = []
 
@@ -86,14 +86,7 @@ export class HomeComponent implements OnInit {
       this.todo_lists = todoLists
       this.todo_lists.forEach(list => {
         list.items.forEach(item => {
-          var newDate: Date = new Date();
-          var now = moment(newDate, 'DD/MM/YYYY');
-          var oneweek = moment(now).add(7, 'days');
-          var itemDate = moment(item.date, 'DD/MM/YYYY');
-
-          if (itemDate <= oneweek){
-            item.deadline_approaching = true
-          }
+          this.checkDeadline(item)
         })
       });
     })

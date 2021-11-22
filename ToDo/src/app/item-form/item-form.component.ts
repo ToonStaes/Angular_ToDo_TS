@@ -37,5 +37,5 @@ export class ItemFormComponent implements OnInit {
 export interface ItemFromComponentData {
   name: string;
   description: string;
-  date: string;
+  date: Date;
 }

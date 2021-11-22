@@ -8,7 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -44,7 +44,7 @@ import { ItemFormComponent } from './item-form/item-form.component';
     MatNativeDateModule,
     MatInputModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'nl-BE' }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

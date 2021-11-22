@@ -36,10 +36,11 @@ export class TodoItemComponent implements OnInit, OnDestroy {
   }
 
   editItem(item: Todo_item) {
-
+    let itemdate = moment(item.date, 'DD/MM/yyyy').toDate();
+    console.log(itemdate)
     const dialogRef = this.dialog.open(ItemFormComponent, {
       width: '450px',
-      data: {description: item.description, date: item.date},
+      data: {description: item.description, date: itemdate},
     })
 
     dialogRef.afterClosed().subscribe(formResult => {
@@ -47,7 +48,16 @@ export class TodoItemComponent implements OnInit, OnDestroy {
 
       item.description = formResult.description
       item.date = formResult.date
-      item.deadline_approaching = false
+      var oneweek = moment().add(7, 'days');
+      var itemDate = moment(item.date, 'DD/MM/YYYY');
+
+      if (itemDate <= oneweek) {
+        item.deadline_approaching = true;
+      }
+      else {
+        item.deadline_approaching = false;
+      }
+      // item.deadline_approaching = false
 
       this.todoItemService.putItem(item.id, item).subscribe(result => {
         console.log(result)

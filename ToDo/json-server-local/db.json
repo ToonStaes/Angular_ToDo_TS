@@ -5,39 +5,26 @@
       "name": "School",
       "category": "custom-grey",
       "showOptions": true
-    },
-    {
-      "id": 7,
-      "name": "Sport",
-      "category": "custom-orange",
-      "showOptions": true
     }
   ],
   "items": [
-    {
-      "description": "Angular: Date formatting in form",
-      "listId": 5,
-      "isFinished": false,
-      "isImportant": true,
-      "date": "29/12/2021",
-      "id": 10,
-      "deadline_approaching": true
-    },
     {
       "description": "Angular: Custom sorting",
       "listId": 5,
       "isFinished": false,
       "isImportant": false,
-      "date": "28/11/2021",
-      "id": 11
+      "date": "24/11/2021",
+      "id": 11,
+      "deadline_approaching": true
     },
     {
       "description": "Angular: Delete list",
       "listId": 5,
-      "isFinished": false,
+      "isFinished": true,
       "isImportant": false,
       "date": "28/11/2021",
-      "id": 15
+      "id": 15,
+      "deadline_approaching": true
     },
     {
       "description": "Angular: Update list",
@@ -54,23 +41,6 @@
       "isImportant": false,
       "date": "28/11/2021",
       "id": 17
-    },
-    {
-      "description": "Angular: toggle displaying done items",
-      "listId": 5,
-      "isFinished": false,
-      "isImportant": false,
-      "date": "28/11/2021",
-      "id": 18
-    },
-    {
-      "description": "Angular: styling deadline approaching",
-      "listId": 5,
-      "isFinished": false,
-      "isImportant": false,
-      "date": "28/11/2021",
-      "id": 19,
-      "deadline_approaching": false
     }
   ]
 }
