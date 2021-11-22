@@ -65,7 +65,6 @@ export class TodoListComponent implements OnInit {
 
         this.todoItemService.postItem(inputItem).subscribe(
           (result) => {
-            console.log(result);
             this.addItemEvent.emit(result);
           },
           (error) => {

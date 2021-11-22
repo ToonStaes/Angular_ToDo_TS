@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { TodoItemComponent } from './todo-item/todo-item.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ItemFormComponent } from './item-form/item-form.component';
+import { ListFormComponent } from './list-form/list-form.component';
 
 
 @NgModule({
@@ -30,6 +32,7 @@ import { ItemFormComponent } from './item-form/item-form.component';
     HeaderComponent,
     FooterComponent,
     ItemFormComponent,
+    ListFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { ItemFormComponent } from './item-form/item-form.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
+    MatSelectModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'nl-BE' }],
   bootstrap: [AppComponent],
