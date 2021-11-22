@@ -4,7 +4,7 @@
     <button *ngIf="todo_list.showOptions" class="btn ml-4 mt-2" mat-button [matMenuTriggerFor]="menu"><i class="fas fa-ellipsis-h"></i></button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="deleteList(todo_list)"><i class="far fa-trash-alt mx-2"></i>Delete</button>
-      <button mat-menu-item (click)="editList(todo_list.id)"><i class="far fa-edit mx-2"></i>Edit</button>
+      <button mat-menu-item (click)="editList(todo_list)"><i class="far fa-edit mx-2"></i>Edit</button>
     </mat-menu>
   </div>
   <div class="card-body">

@@ -5,13 +5,6 @@
       "name": "School",
       "category": "custom-grey",
       "showOptions": true
-    },
-    {
-      "id": 6,
-      "category": "custom-purple",
-      "name": "update pls",
-      "items": [],
-      "showOptions": true
     }
   ],
   "items": [
@@ -57,6 +50,15 @@
       "isImportant": false,
       "date": "28/11/2021",
       "id": 18,
+      "deadline_approaching": true
+    },
+    {
+      "description": "dfqs",
+      "listId": 5,
+      "isFinished": false,
+      "isImportant": false,
+      "date": "24/11/2021",
+      "id": 19,
       "deadline_approaching": true
     }
   ]
