@@ -9,7 +9,7 @@
   ],
   "items": [
     {
-      "description": "Angular: Custom sorting",
+      "description": "Angular: Sorting on description",
       "listId": 5,
       "isFinished": false,
       "isImportant": false,
@@ -18,47 +18,21 @@
       "deadline_approaching": true
     },
     {
-      "description": "Angular: Delete list",
-      "listId": 5,
-      "isFinished": true,
-      "isImportant": false,
-      "date": "28/11/2021",
-      "id": 15,
-      "deadline_approaching": true
-    },
-    {
-      "description": "Angular: Update list",
+      "description": "Angular: Custom sorting",
       "listId": 5,
       "isFinished": false,
       "isImportant": false,
       "date": "28/11/2021",
-      "id": 16
-    },
-    {
-      "description": "Angular: On edit item: date is not displayed",
-      "listId": 5,
-      "isFinished": true,
-      "isImportant": false,
-      "date": "28/11/2021",
-      "id": 17,
+      "id": 12,
       "deadline_approaching": true
     },
     {
-      "description": "Angular: create list: update view",
+      "description": "Angular: form styling",
       "listId": 5,
       "isFinished": false,
       "isImportant": false,
       "date": "28/11/2021",
-      "id": 18,
-      "deadline_approaching": true
-    },
-    {
-      "description": "dfqs",
-      "listId": 5,
-      "isFinished": false,
-      "isImportant": false,
-      "date": "24/11/2021",
-      "id": 19,
+      "id": 13,
       "deadline_approaching": true
     }
   ]

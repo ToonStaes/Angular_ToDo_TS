@@ -1,3 +1,9 @@
+<mat-form-field appearance="fill" class="mb-3">
+  <mat-select [(value)]="selected" (selectionChange)="getLists()">
+    <mat-option value="description">Order by description</mat-option>
+    <mat-option value="custom">Custom ordering</mat-option>
+  </mat-select>
+</mat-form-field>
 <div class="row">
   <app-todo-list *ngFor="let todo_list of todo_lists" [todo_list]="todo_list" class="col-12 mb-5" (deleteItemEvent)="deleteItem($event)" (addItemEvent)="addItem($event)" (editItemEvent)="editItem($event)" (deleteListEvent)="deleteList($event)" (editListEvent)="listEdited($event)"></app-todo-list>
 </div>
