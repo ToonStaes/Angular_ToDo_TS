@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { Todo_item } from '../todo-item';
-import { TodoItemService } from '../todo-item.service';
 import { Todo_list } from '../todo-list';
 import { TodoListService } from '../todo-list.service';
 import { Subject } from 'rxjs';
@@ -21,6 +20,8 @@ export class HomeComponent implements OnInit {
   subject: Subject<any> = new Subject();
   todoItemEdit?: Todo_item;
 
+  selected = "description"
+
   constructor(
     private todoListService: TodoListService,
     private dialog: MatDialog
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit {
 
   deleteItem(result: Todo_item) {
     this.todo_lists.forEach((list) => {
+      list.items.sort(this.sortItemsByName);
       list.items.forEach((item) => {
         if (item.id == result.id) {
           let itemIndex = list.items.indexOf(item, 0);
@@ -41,6 +43,7 @@ export class HomeComponent implements OnInit {
 
   addItem(result: Todo_item) {
     this.todo_lists.forEach((list) => {
+      list.items.sort(this.sortItemsByName);
       if (list.id == result.listId) {
         list.items.push(result);
       }
@@ -51,6 +54,7 @@ export class HomeComponent implements OnInit {
     console.log('editItem received');
     console.log(result);
     this.todo_lists.forEach((list) => {
+      list.items.sort(this.sortItemsByName);
       list.items.forEach((item) => {
         if (item.id == result.id) {
           item = result;
@@ -100,6 +104,7 @@ export class HomeComponent implements OnInit {
 
   listEdited(result: Todo_list) {
     this.todo_lists.forEach(list => {
+      list.items.sort(this.sortItemsByName);
       if (list.id == result.id){
         list.name = result.name
         list.category = result.category
@@ -116,6 +121,16 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  sortItemsByName(item1: Todo_item, item2: Todo_item){
+    if (item1.description.toLowerCase() < item2.description.toLowerCase()){
+      return -1
+    }
+    if (item1.description > item2.description) {
+      return 1;
+    }
+    return 0;
+  }
+
   getLists(): void {
     this.todo_lists = [];
 
@@ -123,6 +138,13 @@ export class HomeComponent implements OnInit {
     this.todoListService.getTodoLists().subscribe((todoLists) => {
       this.todo_lists = todoLists;
       this.todo_lists.forEach((list) => {
+        if (this.selected === "description"){
+          list.items.sort(this.sortItemsByName);
+        }
+        else {
+          list.items.sort()
+        }
+
         list.items.forEach((item) => {
           this.checkDeadline(item);
         });
