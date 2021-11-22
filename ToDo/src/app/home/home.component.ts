@@ -98,8 +98,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  listAdded(list: Todo_list) {
-    this.todo_lists.push(list);
+  listEdited(result: Todo_list) {
+    this.todo_lists.forEach(list => {
+      if (list.id == result.id){
+        list.name = result.name
+        list.category = result.category
+      }
+    })
   }
 
   checkDeadline(item: Todo_item): void {
