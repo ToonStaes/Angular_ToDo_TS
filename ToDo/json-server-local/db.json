@@ -5,6 +5,13 @@
       "name": "School",
       "category": "custom-grey",
       "showOptions": true
+    },
+    {
+      "id": 6,
+      "category": "custom-purple",
+      "name": "update pls",
+      "items": [],
+      "showOptions": true
     }
   ],
   "items": [
@@ -13,7 +20,7 @@
       "listId": 5,
       "isFinished": false,
       "isImportant": false,
-      "date": "24/11/2021",
+      "date": "28/11/2021",
       "id": 11,
       "deadline_approaching": true
     },
@@ -37,10 +44,20 @@
     {
       "description": "Angular: On edit item: date is not displayed",
       "listId": 5,
+      "isFinished": true,
+      "isImportant": false,
+      "date": "28/11/2021",
+      "id": 17,
+      "deadline_approaching": true
+    },
+    {
+      "description": "Angular: create list: update view",
+      "listId": 5,
       "isFinished": false,
       "isImportant": false,
       "date": "28/11/2021",
-      "id": 17
+      "id": 18,
+      "deadline_approaching": true
     }
   ]
 }
