@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   subject: Subject<any> = new Subject();
   todoItemEdit?: Todo_item;
 
-  selected = 'description';
+  selected = 'date';
 
   constructor(
     private todoListService: TodoListService,
