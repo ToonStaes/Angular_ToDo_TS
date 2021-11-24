@@ -29,7 +29,11 @@ export class HomeComponent implements OnInit {
 
   deleteItem(result: Todo_item) {
     this.todo_lists.forEach((list) => {
-      list.items.sort(this.sortItemsByName);
+      if (this.selected === 'date') {
+        list.items.sort(this.sortItemsByDate);
+      } else {
+        list.items.sort(this.customSort);
+      }
       list.items.forEach((item) => {
         if (item.id == result.id) {
           let itemIndex = list.items.indexOf(item, 0);
@@ -43,7 +47,11 @@ export class HomeComponent implements OnInit {
 
   addItem(result: Todo_item) {
     this.todo_lists.forEach((list) => {
-      list.items.sort(this.sortItemsByName);
+      if (this.selected === 'date') {
+        list.items.sort(this.sortItemsByDate);
+      } else {
+        list.items.sort(this.customSort);
+      }
       if (list.id == result.listId) {
         list.items.push(result);
       }
@@ -54,7 +62,11 @@ export class HomeComponent implements OnInit {
     console.log('editItem received');
     console.log(result);
     this.todo_lists.forEach((list) => {
-      list.items.sort(this.sortItemsByName);
+      if (this.selected === 'date') {
+        list.items.sort(this.sortItemsByDate);
+      } else {
+        list.items.sort(this.customSort);
+      }
       list.items.forEach((item) => {
         if (item.id == result.id) {
           item = result;
@@ -104,7 +116,11 @@ export class HomeComponent implements OnInit {
 
   listEdited(result: Todo_list) {
     this.todo_lists.forEach((list) => {
-      list.items.sort(this.sortItemsByName);
+      if (this.selected === 'date') {
+        list.items.sort(this.sortItemsByDate);
+      } else {
+        list.items.sort(this.customSort);
+      }
       if (list.id == result.id) {
         list.name = result.name;
         list.category = result.category;
@@ -121,11 +137,13 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  sortItemsByName(item1: Todo_item, item2: Todo_item) {
-    if (item1.description.toLowerCase() < item2.description.toLowerCase()) {
+  sortItemsByDate(item1: Todo_item, item2: Todo_item) {
+    var date1 = moment(item1.date, "DD/MM/YYYY")
+    var date2 = moment(item2.date, 'DD/MM/YYYY');
+    if (date1 < date2) {
       return -1;
     }
-    if (item1.description > item2.description) {
+    if (date1 > date2) {
       return 1;
     }
     return 0;
@@ -135,7 +153,7 @@ export class HomeComponent implements OnInit {
     if (item1.order < item2.order) {
       return -1;
     }
-    if (item1.description > item2.description) {
+    if (item1.order > item2.order) {
       return 1;
     }
     return 0;
@@ -148,8 +166,8 @@ export class HomeComponent implements OnInit {
     this.todoListService.getTodoLists().subscribe((todoLists) => {
       this.todo_lists = todoLists;
       this.todo_lists.forEach((list) => {
-        if (this.selected === 'description') {
-          list.items.sort(this.sortItemsByName);
+        if (this.selected === 'date') {
+          list.items.sort(this.sortItemsByDate);
         } else {
           list.items.sort(this.customSort);
         }
