@@ -6,4 +6,5 @@ export interface Todo_item {
   isImportant: boolean;
   isFinished: boolean;
   deadline_approaching: boolean;
+  order: number;
 }

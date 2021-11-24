@@ -23,7 +23,7 @@ export class TodoListService {
   }
 
   getTodoListById(id: number): Observable<Todo_list> {
-    return this.httpClient.get<Todo_list>('http://localhost:3000/lists/' + id);
+    return this.httpClient.get<Todo_list>('http://localhost:3000/lists/' + id + "?_embed=items");
   }
 
   deleteList(id: number): Observable<Todo_list> {

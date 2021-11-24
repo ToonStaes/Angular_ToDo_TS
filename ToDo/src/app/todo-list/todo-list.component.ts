@@ -76,6 +76,8 @@ export class TodoListComponent implements OnInit {
         } else {
           deadline_approaching = false;
         }
+
+        console.log(result)
         let inputItem: Todo_item = {
           description: formResult.description,
           listId: listId,
@@ -84,6 +86,7 @@ export class TodoListComponent implements OnInit {
           date: itemDate.format('DD/MM/YYYY'),
           id: 0,
           deadline_approaching: deadline_approaching,
+          order: result.items.length + 1
         };
 
         this.todoItemService.postItem(inputItem).subscribe(
