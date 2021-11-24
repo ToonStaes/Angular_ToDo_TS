@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>{{data.name}}</h1>
-<div mat-dialog-content [formGroup]="formGroup">
-  
+<div mat-dialog-content [formGroup]="formGroup" class="text-center">
+
   <mat-form-field appearance="fill">
     <mat-label>description</mat-label>
     <input matInput formControlName="description" required>
@@ -14,7 +14,7 @@
   </mat-form-field>
 </div>
 
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="formGroup.value">Ok</button>
+<div mat-dialog-actions class="row">
+  <button mat-button (click)="onNoClick()" class="btn btn-danger col-6 text-center">Cancel</button>
+  <button mat-button [mat-dialog-close]="formGroup.value" class="btn btn-success col-6 text-center">Submit</button>
 </div>

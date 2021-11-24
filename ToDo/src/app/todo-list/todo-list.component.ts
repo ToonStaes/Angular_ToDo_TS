@@ -65,7 +65,7 @@ export class TodoListComponent implements OnInit {
       // this.list = result;
 
       const dialogRef = this.dialog.open(ItemFormComponent, {
-        width: '450px',
+        width: '285px',
         data: { description: '', date: '' },
       });
 
@@ -120,14 +120,22 @@ export class TodoListComponent implements OnInit {
     var pos = 1
     console.log(list.items)
     list.items.forEach(item => {
-      item.order = pos
-      pos++
+      item.order = pos;
+      this.todoItemService.putItem(item.id, item).subscribe(result => {
+          console.log(result)
+        }, error => {
+          console.log(error)
+        })
+      pos++;
     })
-    this.todolistService.putList(list.id, list).subscribe(result => {
-        console.log(result)
-      }, error => {
-        console.log(error)
-      })
+    // this.todolistService.putList(list.id, list).subscribe(result => {
+    //     result.items.forEach(item => {
+    //       console.log(item.description + " " + item.order)
+    //     })
+    //     // this.editListEvent.emit(result);
+    //   }, error => {
+    //     console.log(error)
+    //   })
   }
 
   constructor(
