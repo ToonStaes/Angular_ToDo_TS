@@ -15,7 +15,7 @@ import * as moment from 'moment';
   styleUrls: ['./todo-item.component.scss']
 })
 export class TodoItemComponent implements OnInit, OnDestroy {
-  @Input() todo_item: Todo_item = {id: 0, listId: 0, description: "", date: "", isImportant: false, isFinished: false, deadline_approaching: false}
+  @Input() todo_item: Todo_item = {id: 0, listId: 0, description: "", date: "", isImportant: false, isFinished: false, deadline_approaching: false, order: 0}
 
   @Output() deleteItemEvent: EventEmitter<any> = new EventEmitter();
   @Output() editItemEvent: EventEmitter<any> = new EventEmitter();

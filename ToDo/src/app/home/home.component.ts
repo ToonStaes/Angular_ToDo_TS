@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   subject: Subject<any> = new Subject();
   todoItemEdit?: Todo_item;
 
-  selected = "description"
+  selected = 'description';
 
   constructor(
     private todoListService: TodoListService,
@@ -93,7 +93,7 @@ export class HomeComponent implements OnInit {
         (result) => {
           console.log('list added');
           console.log(result);
-          this.todo_lists.push(result)
+          this.todo_lists.push(result);
         },
         (error) => {
           console.log(error);
@@ -103,13 +103,13 @@ export class HomeComponent implements OnInit {
   }
 
   listEdited(result: Todo_list) {
-    this.todo_lists.forEach(list => {
+    this.todo_lists.forEach((list) => {
       list.items.sort(this.sortItemsByName);
-      if (list.id == result.id){
-        list.name = result.name
-        list.category = result.category
+      if (list.id == result.id) {
+        list.name = result.name;
+        list.category = result.category;
       }
-    })
+    });
   }
 
   checkDeadline(item: Todo_item): void {
@@ -121,9 +121,19 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  sortItemsByName(item1: Todo_item, item2: Todo_item){
-    if (item1.description.toLowerCase() < item2.description.toLowerCase()){
-      return -1
+  sortItemsByName(item1: Todo_item, item2: Todo_item) {
+    if (item1.description.toLowerCase() < item2.description.toLowerCase()) {
+      return -1;
+    }
+    if (item1.description > item2.description) {
+      return 1;
+    }
+    return 0;
+  }
+
+  customSort(item1: Todo_item, item2: Todo_item) {
+    if (item1.order < item2.order) {
+      return -1;
     }
     if (item1.description > item2.description) {
       return 1;
@@ -138,11 +148,10 @@ export class HomeComponent implements OnInit {
     this.todoListService.getTodoLists().subscribe((todoLists) => {
       this.todo_lists = todoLists;
       this.todo_lists.forEach((list) => {
-        if (this.selected === "description"){
+        if (this.selected === 'description') {
           list.items.sort(this.sortItemsByName);
-        }
-        else {
-          list.items.sort()
+        } else {
+          list.items.sort(this.customSort);
         }
 
         list.items.forEach((item) => {

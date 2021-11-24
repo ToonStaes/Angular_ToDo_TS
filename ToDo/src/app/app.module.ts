@@ -11,6 +11,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,6 +48,7 @@ import { ListFormComponent } from './list-form/list-form.component';
     MatNativeDateModule,
     MatInputModule,
     MatSelectModule,
+    DragDropModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'nl-BE' }],
   bootstrap: [AppComponent],
