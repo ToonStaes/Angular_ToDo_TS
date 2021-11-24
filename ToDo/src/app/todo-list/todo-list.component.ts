@@ -65,7 +65,7 @@ export class TodoListComponent implements OnInit {
       // this.list = result;
 
       const dialogRef = this.dialog.open(ItemFormComponent, {
-        width: '450px',
+        width: '285px',
         data: { description: '', date: '' },
       });
 
