@@ -7,6 +7,7 @@ import { Todo_item } from '../todo-item';
 import * as moment from 'moment';
 import { TodoItemService } from '../todo-item.service';
 import { ListFormComponent } from '../list-form/list-form.component';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-todo-list',
@@ -21,6 +22,8 @@ export class TodoListComponent implements OnInit {
     items: [],
     showOptions: true,
   };
+
+  @Input() sorter?: string;
 
   @Output() deleteItemEvent: EventEmitter<any> = new EventEmitter();
   @Output() addItemEvent: EventEmitter<any> = new EventEmitter();
@@ -51,8 +54,8 @@ export class TodoListComponent implements OnInit {
       list.category = formResult.colour;
 
       this.todolistService.putList(list.id, list).subscribe((result) => {
-        console.log(result)
-        this.editListEvent.emit(result)
+        console.log(result);
+        this.editListEvent.emit(result);
       });
     });
   }
@@ -77,7 +80,7 @@ export class TodoListComponent implements OnInit {
           deadline_approaching = false;
         }
 
-        console.log(result)
+        console.log(result);
         let inputItem: Todo_item = {
           description: formResult.description,
           listId: listId,
@@ -86,7 +89,7 @@ export class TodoListComponent implements OnInit {
           date: itemDate.format('DD/MM/YYYY'),
           id: 0,
           deadline_approaching: deadline_approaching,
-          order: result.items.length + 1
+          order: result.items.length + 1,
         };
 
         this.todoItemService.postItem(inputItem).subscribe(
@@ -109,6 +112,22 @@ export class TodoListComponent implements OnInit {
     console.log('deleteItem functie in list');
     console.log(result);
     this.deleteItemEvent.emit(result);
+  }
+
+  drop(event: CdkDragDrop<string[]>, list: Todo_list){
+    console.log(list.items)
+    moveItemInArray(list.items, event.previousIndex, event.currentIndex);
+    var pos = 1
+    console.log(list.items)
+    list.items.forEach(item => {
+      item.order = pos
+      pos++
+    })
+    this.todolistService.putList(list.id, list).subscribe(result => {
+        console.log(result)
+      }, error => {
+        console.log(error)
+      })
   }
 
   constructor(
