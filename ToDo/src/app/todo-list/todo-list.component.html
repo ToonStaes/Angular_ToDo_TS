@@ -8,11 +8,11 @@
     </mat-menu>
   </div>
   <div class="card-body item-list" cdkDropList (cdkDropListDropped)="drop($event, todo_list)">
-    <div *ngIf="sorter !== 'description'">
+    <div *ngIf="sorter !== 'date'">
       <app-todo-item *ngFor="let item of todo_list.items" class="item-box"[todo_item]="item" (deleteItemEvent)="deleteItem($event)" (editItemEvent)="editItem($event)" cdkDrag></app-todo-item>
     </div>
 
-    <div *ngIf="sorter === 'description'">
+    <div *ngIf="sorter === 'date'">
       <app-todo-item *ngFor="let item of todo_list.items" [todo_item]="item" (deleteItemEvent)="deleteItem($event)" (editItemEvent)="editItem($event)"></app-todo-item>
     </div>
     <div *ngIf="todo_list.showOptions" class="text-center" >
