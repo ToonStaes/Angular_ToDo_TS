@@ -11,7 +11,7 @@
     {
       "description": "Angular: Sorting on description",
       "listId": 5,
-      "isFinished": false,
+      "isFinished": true,
       "isImportant": false,
       "date": "28/11/2021",
       "id": 11,
@@ -30,7 +30,7 @@
       "description": "Angular: form styling",
       "listId": 5,
       "isFinished": false,
-      "isImportant": false,
+      "isImportant": true,
       "date": "28/11/2021",
       "id": 13,
       "deadline_approaching": true

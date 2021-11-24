@@ -7,11 +7,17 @@
 .important-item {
   background-color: rgba($color: red, $alpha: 0.5);
   color: white;
+  i {
+    color: white;
+  }
 }
 
 .finished-item {
   background-color: rgba($color: green, $alpha: 0.5);
   color: white;
+  i {
+    color: white;
+  }
 }
 
 .deadlineApproaching{
